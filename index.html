@@ -282,6 +282,12 @@
   .contact .btn.ghost { background: transparent; color: var(--ivory); border-color: rgba(251,247,241,.5); }
   .contact .btn.ghost:hover { background: var(--ivory); color: var(--ink); }
   .contact .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .copy-mini {
+    display: inline-block; margin-left: 10px; vertical-align: middle; background: none; cursor: pointer;
+    border: 1px solid rgba(251,247,241,.3); color: var(--gold-soft) !important; padding: 4px 10px;
+    font: 500 10px var(--sans) !important; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .copy-mini:hover { border-color: var(--gold-soft); }
   .contact .pic { min-height: 520px; background: url("images/white-chrysanthemum.jpg") center / cover no-repeat; }
 
   footer { background: #1a1412; color: rgba(251,247,241,.6); padding: 54px 0 40px; text-align: center; font-size: 12px; }
@@ -307,14 +313,176 @@
   .hero-text > *:nth-child(5) { animation-delay: .48s; }
   @keyframes rise { from { opacity: .001; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
+
+  /* Buttons that look like links */
+  button.order { background: none; border: 0; border-bottom: 1px solid var(--ink); padding: 0 0 3px; cursor: pointer; font-family: var(--sans); color: var(--ink); }
+  button.order:hover { color: var(--rose); border-color: var(--rose); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* Filter chips */
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin: -24px 0 44px; }
+  .chip {
+    font-family: var(--sans); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500;
+    padding: 11px 20px; border: 1px solid var(--line); background: transparent; color: var(--ink-soft); cursor: pointer;
+    transition: all .3s var(--ease);
+  }
+  .chip:hover { border-color: var(--ink); color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+  .card[hidden] { display: none !important; }
+  .empty { text-align: center; color: var(--ink-soft); padding: 40px 0; }
+
+  /* Gallery buttons */
+  .gallery button { border: 0; padding: 0; background: #e9dfd3; cursor: zoom-in; overflow: hidden; position: relative; display: block; width: 100%; height: 100%; }
+  .gallery button:hover img { transform: scale(1.05); }
+  .gallery button:first-child { grid-row: span 2; }
+  .insta-more { display: flex; justify-content: center; margin-top: 36px; }
+
+  /* Card messages */
+  .messages { background: var(--ivory); }
+  .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 44px 0 40px; }
+  .msg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .msg {
+    background: var(--cream); padding: 38px 32px 28px; display: flex; flex-direction: column; gap: 22px; position: relative;
+  }
+  .msg::before { content: "“"; position: absolute; top: 4px; left: 22px; font-family: var(--serif); font-size: 72px; color: var(--gold-soft); line-height: 1; }
+  .msg p { font-family: var(--serif); font-size: 22px; font-style: italic; line-height: 1.45; margin: 0; flex: 1; position: relative; }
+  .msg .row { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
+  .msg .row .order { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
+
+  /* FAQ */
+  .faq-wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+  .faq-wrap > div { min-width: 0; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details:first-child { border-top: 1px solid var(--line); }
+  .faq summary {
+    list-style: none; cursor: pointer; padding: 24px 40px 24px 0; position: relative;
+    font-family: var(--serif); font-size: 23px; line-height: 1.3;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    font-family: var(--sans); font-weight: 300; font-size: 26px; color: var(--gold); transition: transform .3s var(--ease);
+  }
+  .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+  .faq details p, .faq details ul { margin: 0 0 24px; color: var(--ink-soft); padding-right: 40px; }
+  .faq details ul { padding-left: 18px; }
+
+  /* Dialogs */
+  dialog.modal {
+    border: 0; padding: 0; width: min(560px, calc(100% - 32px)); max-height: calc(100% - 32px);
+    background: var(--ivory); color: var(--ink); box-shadow: 0 30px 80px rgba(28,16,18,.3);
+  }
+  dialog.modal.wide { width: min(720px, calc(100% - 32px)); }
+  dialog.modal::backdrop { background: rgba(28,16,18,.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  dialog.modal[open] { animation: pop .45s var(--ease); }
+  @keyframes pop { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .m-head { padding: 34px 36px 0; position: relative; }
+  .m-head h3 { font-size: 34px; margin-top: 10px; }
+  .m-body { padding: 26px 36px 36px; }
+  .m-close {
+    position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border: 0; background: none; cursor: pointer; color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .m-close svg { width: 22px; height: 22px; }
+  .bignum {
+    font-family: var(--serif); font-size: clamp(44px, 10vw, 60px); letter-spacing: .04em; line-height: 1; color: var(--rose-deep);
+    user-select: all; -webkit-user-select: all; margin: 4px 0 6px;
+  }
+  .m-sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 24px; }
+  .m-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .m-actions .btn { padding: 15px 14px; }
+  .m-actions .full { grid-column: 1 / -1; }
+  .m-list { list-style: none; padding: 0; margin: 28px 0 0; border-top: 1px solid var(--line); }
+  .m-list li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .m-list li svg { width: 20px; height: 20px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+  .m-list li div { flex: 1; min-width: 0; }
+  .m-list small { display: block; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+  .m-list a { border-bottom: 1px solid var(--gold-soft); }
+
+  /* Order form */
+  .pick { display: flex; gap: 16px; align-items: center; background: var(--cream); padding: 14px; margin-bottom: 24px; }
+  .pick img { width: 72px; height: 88px; object-fit: cover; flex-shrink: 0; }
+  .pick .pk { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pick .pk-price { font-family: var(--serif); font-size: 22px; color: var(--rose-deep); }
+  .pick .pk-custom { width: 72px; height: 88px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, #f6e6e3, #efe2cf); color: var(--gold); }
+  .pick .pk-custom svg { width: 30px; height: 30px; }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; }
+  .form .full { grid-column: 1 / -1; }
+  .form fieldset { border: 0; padding: 0; margin: 8px 0 0; grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; }
+  .form legend { font-family: var(--serif); font-size: 21px; padding: 0; margin-bottom: 12px; color: var(--rose-deep); }
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .field label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  .field label i { font-style: normal; color: var(--rose); }
+  .field input, .field select, .field textarea {
+    font: 400 15px/1.5 var(--sans); color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 0;
+    padding: 12px 14px; width: 100%; transition: border-color .3s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 36px;
+  }
+  .field textarea { resize: vertical; min-height: 84px; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+  .field.bad input, .field.bad select, .field.bad textarea { border-color: var(--rose); }
+  .field .err { font-size: 12px; color: var(--rose); min-height: 0; }
+  .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft); cursor: pointer; }
+  .check input { margin-top: 5px; accent-color: var(--rose-deep); width: 16px; height: 16px; }
+  .form .submit { grid-column: 1 / -1; margin-top: 8px; }
+  .summary {
+    background: var(--cream); padding: 20px 22px; font: 400 14px/1.7 var(--sans); white-space: pre-wrap; word-break: break-word;
+    margin: 0 0 22px; max-height: 280px; overflow: auto;
+  }
+  .ok-mark { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .ok-mark svg { width: 24px; height: 24px; }
+  .fine { font-size: 12px; color: var(--ink-soft); margin: 18px 0 0; }
+  .back-link { background: none; border: 0; padding: 0; margin-top: 16px; cursor: pointer; font: 500 11px var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 1px solid var(--line); }
+
+  /* Lightbox */
+  dialog.lightbox { border: 0; padding: 0; margin: 0; inset: 0; background: transparent; max-width: 100%; max-height: 100%; width: 100%; height: 100%; }
+  dialog.lightbox::backdrop { background: rgba(20,12,14,.92); }
+  .lb { position: relative; width: 100%; height: 100%; background: rgba(20,12,14,.94); display: flex; align-items: center; justify-content: center; padding: 64px 72px; }
+  .lb img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.4); }
+  .lb-cap { position: absolute; left: 0; right: 0; bottom: 20px; text-align: center; color: rgba(251,247,241,.8); font-family: var(--serif); font-style: italic; font-size: 20px; padding: 0 16px; }
+  .lb button { position: absolute; background: rgba(251,247,241,.1); border: 1px solid rgba(251,247,241,.25); color: #fff; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .3s; }
+  .lb button:hover { background: rgba(251,247,241,.22); }
+  .lb button svg { width: 20px; height: 20px; }
+  .lb .lb-close { top: 16px; right: 16px; }
+  .lb .lb-prev { left: 16px; top: 50%; transform: translateY(-50%) scaleX(-1); }
+  .lb .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+  /* Toast + back to top */
+  .toast {
+    position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); z-index: 100;
+    transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+    background: var(--ink); color: var(--ivory); padding: 14px 24px; font-size: 13px; letter-spacing: .04em;
+    transition: all .4s var(--ease); max-width: calc(100% - 32px); text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .totop {
+    position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 39;
+    width: 48px; height: 48px; border: 1px solid var(--line); background: rgba(251,247,241,.92); color: var(--ink);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    opacity: 0; pointer-events: none; transform: translateY(10px); transition: all .4s var(--ease);
+  }
+  .totop.show { opacity: 1; pointer-events: auto; transform: none; }
+  .totop svg { width: 18px; height: 18px; transform: rotate(-90deg); }
+  button.fab { border: 0; cursor: pointer; }
+
   @media (prefers-reduced-motion: reduce) {
     .petal { display: none; }
     .anim .reveal, .hero-text > * { transform: none; transition: none; animation: none; }
+    dialog.modal[open] { animation: none; }
     html { scroll-behavior: auto; }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1180px) {
     .nav ul, .nav .call { display: none; }
+    .burger { display: block; }
+  }
+  @media (max-width: 1024px) {
+    .msg-grid { grid-template-columns: 1fr 1fr; }
+    .faq-wrap { grid-template-columns: 1fr; gap: 40px; }
     .burger { display: block; }
     .grid { grid-template-columns: repeat(2, 1fr); }
     .values { grid-template-columns: repeat(2, 1fr); }
@@ -350,6 +518,20 @@
     .contact .actions .btn { flex: 1 1 100%; }
     .band { padding: 110px 0; }
     .fab { display: flex; }
+    .totop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); right: 23px; }
+    .gallery button:first-child { grid-column: span 2; grid-row: auto; }
+    .msg-grid { grid-template-columns: 1fr; }
+    .msg p { font-size: 20px; }
+    .m-head { padding: 28px 20px 0; }
+    .m-body { padding: 22px 20px 26px; }
+    .m-head h3 { font-size: 28px; padding-right: 32px; }
+    .form, .form fieldset { grid-template-columns: 1fr; }
+    .m-actions { grid-template-columns: 1fr; }
+    .lb { padding: 64px 8px 72px; }
+    .lb .lb-prev, .lb .lb-next { top: auto; bottom: 14px; transform: none; }
+    .lb .lb-prev { transform: scaleX(-1); }
+    .lb-cap { bottom: 74px; font-size: 17px; }
+    .filters { margin-top: -28px; }
   }
 </style>
 </head>
@@ -373,11 +555,12 @@
     <ul>
       <li><a href="#about">Бидний тухай</a></li>
       <li><a href="#collection">Цуглуулга</a></li>
-      <li><a href="#occasions">Баяр ёслол</a></li>
+      <li><a href="#messages">Картын үг</a></li>
       <li><a href="#delivery">Хүргэлт</a></li>
+      <li><a href="#faq">Асуулт</a></li>
       <li><a href="#contact">Холбоо барих</a></li>
     </ul>
-    <a href="tel:+97691854040" class="btn call"><svg><use href="#i-phone"/></svg>9185 4040</a>
+    <button type="button" class="btn call" data-contact><svg><use href="#i-phone"/></svg>Холбогдох</button>
     <button class="burger" aria-label="Цэс нээх" id="openMenu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h18M3 12h18M9 17h12"/></svg>
     </button>
@@ -390,10 +573,11 @@
   </button>
   <a class="link" href="#about">Бидний тухай</a>
   <a class="link" href="#collection">Цуглуулга</a>
-  <a class="link" href="#occasions">Баяр ёслол</a>
+  <a class="link" href="#messages">Картын үг</a>
   <a class="link" href="#delivery">Хүргэлт</a>
+  <a class="link" href="#faq">Түгээмэл асуулт</a>
   <a class="link" href="#contact">Холбоо барих</a>
-  <a href="tel:+97691854040" class="btn" style="margin-top:14px"><svg><use href="#i-phone"/></svg>9185 4040</a>
+  <button type="button" class="btn" style="margin-top:14px" data-contact><svg><use href="#i-phone"/></svg>Холбогдох</button>
 </nav>
 
 <!-- Hero -->
@@ -406,7 +590,7 @@
       <p class="reveal">Үг хүрэлцэхгүй мөчид цэцэг ярина. Le Rubi-гийн гараар урласан тансаг баглаа бүр таны сэтгэлийн дулааныг хайртай хүндээ хамгийн гоё хэлбэрээр хүргэнэ.</p>
       <div class="actions reveal">
         <a href="#collection" class="btn">Цуглуулга үзэх</a>
-        <a href="tel:+97691854040" class="btn ghost"><svg><use href="#i-phone"/></svg>Захиалга өгөх</a>
+        <button type="button" class="btn ghost" data-order><svg><use href="#i-gift"/></svg>Захиалга өгөх</button>
       </div>
       <div class="meta reveal">
         <span><svg><use href="#i-truck"/></svg>Хүргэлттэй</span>
@@ -448,8 +632,15 @@
       </div>
     </div>
 
-    <div class="grid">
-      <article class="card reveal">
+    <div class="filters reveal" role="group" aria-label="Үнээр шүүх">
+      <button type="button" class="chip" data-filter="all" aria-pressed="true">Бүгд</button>
+      <button type="button" class="chip" data-filter="100000-200000" aria-pressed="false">100–200 мянга</button>
+      <button type="button" class="chip" data-filter="200001-350000" aria-pressed="false">200–350 мянга</button>
+      <button type="button" class="chip" data-filter="350001-500000" aria-pressed="false">350–500 мянга</button>
+    </div>
+
+    <div class="grid" id="grid">
+      <article class="card reveal" data-price="150000">
         <div class="ph">
           <img src="images/pink-roses.jpg" alt="Ягаан сарнайн баглаа ягаан цаасан боодолтой" loading="lazy">
           <span class="tag">Хамгийн их захиалгатай</span>
@@ -457,11 +648,11 @@
         <div class="body">
           <h3>Ягаан Мөрөөдөл</h3>
           <p class="desc">Зөөлөн ягаан сарнай, ногоон навчис, эрвээхэйн чимэглэлтэй. Эмзэг сэтгэлийн дулаан илэрхийлэл.</p>
-          <div class="foot"><span class="price">150,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">150,000₮</span><button type="button" class="order" data-order>Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-price="200000">
         <div class="ph">
           <img src="images/white-chrysanthemum.jpg" alt="Цагаан хризантем цэцгийн баглаа" loading="lazy">
           <span class="tag">Цэвэр ариун</span>
@@ -469,11 +660,11 @@
         <div class="body">
           <h3>Цагаан Үүл</h3>
           <p class="desc">Том толгойт цагаан хризантемууд, саарал тансаг боодолтой. Хүндэтгэл, талархал, шинэ эхлэлийн бэлэг тэмдэг.</p>
-          <div class="foot"><span class="price">200,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">200,000₮</span><button type="button" class="order" data-order>Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-price="280000">
         <div class="ph">
           <img src="images/pink-mix.jpg" alt="Ягаан сарнай, хризантем холилдсон хар боодолтой баглаа" loading="lazy">
           <span class="tag">Дизайнерын сонголт</span>
@@ -481,11 +672,11 @@
         <div class="body">
           <h3>Хатан Ягаан</h3>
           <p class="desc">Сарнай, бутлаг сарнай, хризантем, левкой цэцгийн гайхалтай хослол. Хар өнгийн тансаг боодол нь онцгой хэв маягийг тодотгоно.</p>
-          <div class="foot"><span class="price">280,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">280,000₮</span><button type="button" class="order" data-order>Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-price="450000">
         <div class="ph">
           <img src="images/grand-pink.jpg" alt="Олон ягаан сарнайтай том баглаа" loading="lazy">
           <span class="tag">Prestige</span>
@@ -493,11 +684,11 @@
         <div class="body">
           <h3>Мянган Инээмсэглэл</h3>
           <p class="desc">Арвин ягаан сарнайн сүрлэг баглаа. Хэлж барахгүй их хайрыг нэг харцаар мэдрүүлнэ.</p>
-          <div class="foot"><span class="price">450,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">450,000₮</span><button type="button" class="order" data-order>Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-price="500000">
         <div class="ph">
           <img src="images/red-roses-orchid.jpg" alt="Улаан сарнай, цагаан орхидейтой зүрхэн хэлбэрийн баглаа" loading="lazy">
           <span class="tag">Signature</span>
@@ -505,11 +696,11 @@
         <div class="body">
           <h3>Цор Ганц Түүндээ</h3>
           <p class="desc">Зүрхэн хэлбэрт улаан сарнай, цагаан орхидейн нарийн хослол. Хамгийн чухал хүндээ зориулсан хамгийн онцгой бэлэг.</p>
-          <div class="foot"><span class="price">500,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">500,000₮</span><button type="button" class="order" data-order>Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
 
-      <article class="card custom reveal">
+      <article class="card custom reveal" data-price="100000">
         <div class="ph">
           <div class="inner">
             <svg><use href="#i-sparkle"/></svg>
@@ -519,7 +710,7 @@
         <div class="body">
           <h3>Захиалгат баглаа</h3>
           <p class="desc">Дуртай өнгө, цэцэг, төсвөө хэлээрэй — флористууд маань зөвхөн танд зориулсан давтагдашгүй баглааг бүтээнэ.</p>
-          <div class="foot"><span class="price">100,000₮-өөс</span><a class="order" href="tel:+97691854040">Зөвлөгөө авах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+          <div class="foot"><span class="price">100,000₮-өөс</span><button type="button" class="order" data-order>Зөвлөгөө авах <svg width="14" height="14"><use href="#i-arrow"/></svg></button></div>
         </div>
       </article>
     </div>
@@ -561,11 +752,14 @@
     </div>
 
     <div class="gallery">
-      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/red-roses-orchid.jpg" alt="Улаан сарнай, орхидейн баглаа" loading="lazy"></a>
-      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/pink-mix.jpg" alt="Ягаан холимог баглаа" loading="lazy"></a>
-      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/white-chrysanthemum.jpg" alt="Цагаан хризантем" loading="lazy"></a>
-      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/grand-pink.jpg" alt="Том ягаан сарнайн баглаа" loading="lazy"></a>
-      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/pink-roses.jpg" alt="Ягаан сарнай" loading="lazy"></a>
+      <button type="button" class="reveal" data-lightbox aria-label="Томруулж харах"><img src="images/red-roses-orchid.jpg" alt="Улаан сарнай, орхидейн баглаа" loading="lazy"></button>
+      <button type="button" class="reveal" data-lightbox aria-label="Томруулж харах"><img src="images/pink-mix.jpg" alt="Ягаан холимог баглаа" loading="lazy"></button>
+      <button type="button" class="reveal" data-lightbox aria-label="Томруулж харах"><img src="images/white-chrysanthemum.jpg" alt="Цагаан хризантем" loading="lazy"></button>
+      <button type="button" class="reveal" data-lightbox aria-label="Томруулж харах"><img src="images/grand-pink.jpg" alt="Том ягаан сарнайн баглаа" loading="lazy"></button>
+      <button type="button" class="reveal" data-lightbox aria-label="Томруулж харах"><img src="images/pink-roses.jpg" alt="Ягаан сарнай" loading="lazy"></button>
+    </div>
+    <div class="insta-more reveal">
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="btn ghost"><svg><use href="#i-insta"/></svg>Instagram-д илүү ихийг үзэх</a>
     </div>
   </div>
 </section>
@@ -579,8 +773,68 @@
     </div>
     <div class="steps">
       <div class="step reveal"><div class="n">01</div><h3>Баглаагаа сонгох</h3><p>Цуглуулгаас сонгох эсвэл өөрийн хүссэн өнгө, төсвөөр захиалгат баглаа хийлгэх боломжтой.</p></div>
-      <div class="step reveal"><div class="n">02</div><h3>Захиалга өгөх</h3><p>9185 4040 дугаарт залгах эсвэл Instagram-аар бидэнтэй холбогдоорой. Мэндчилгээний картанд бичих үгээ хэлээрэй.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Захиалга өгөх</h3><p>«Захиалах» товчийг дарж мэдээллээ бөглөх, эсвэл 9185 4040 дугаарт залгах, Instagram-аар бичих боломжтой.</p></div>
       <div class="step reveal"><div class="n">03</div><h3>Бид хүргэнэ</h3><p>Таны хайртай хүнд баглааг нь цэвэрхэн, анхааралтайгаар хаалган дээр нь хүргэж өгнө.</p></div>
+    </div>
+    <div class="reveal" style="margin-top:56px; display:flex; flex-wrap:wrap; gap:14px">
+      <button type="button" class="btn" data-order><svg><use href="#i-gift"/></svg>Захиалга өгөх</button>
+      <button type="button" class="btn ghost" data-contact><svg><use href="#i-phone"/></svg>Холбогдох</button>
+    </div>
+  </div>
+</section>
+
+<!-- Card messages -->
+<section id="messages" class="messages">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow both">Мэндчилгээний карт</span>
+      <h2 style="margin-top:16px">Хэлэх <em>үгээ</em> олъё</h2>
+      <p class="lead" style="margin-top:20px">Баглаа бүр мэндчилгээний карттай. Сэтгэлийн үгээ олоход тань туслах санаанууд. Хуулж аваад эсвэл шууд захиалгадаа ашиглаарай.</p>
+    </div>
+    <div class="tabs reveal" role="tablist" aria-label="Үйл явдал" id="msgTabs"></div>
+    <div class="msg-grid" id="msgGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="collection">
+  <div class="wrap faq-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Түгээмэл асуулт</span>
+      <h2 style="margin:16px 0 22px">Танд <em>асуулт</em> байна уу?</h2>
+      <p class="lead">Хариултаа олохгүй бол бидэнтэй шууд холбогдоорой.</p>
+      <button type="button" class="btn" style="margin-top:20px" data-contact><svg><use href="#i-phone"/></svg>Холбогдох</button>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>Хэрхэн захиалга өгөх вэ?</summary>
+        <p>Цуглуулгаас баглаагаа сонгоод «Захиалах» товчийг дарж хүргэлтийн мэдээллээ бөглөнө. Дараа нь бэлэн болсон захиалгын мэдээллийг SMS эсвэл Instagram-аар бидэнд илгээнэ. Мөн 9185 4040 дугаарт шууд залгаж захиалах боломжтой.</p>
+      </details>
+      <details>
+        <summary>Хүргэлт хийдэг үү?</summary>
+        <p>Тийм. Хүргэлтийн цаг, бүс болон хүргэлтийн төлбөрийг захиалга баталгаажуулах үед тантай тохиролцоно.</p>
+      </details>
+      <details>
+        <summary>Өөрийн хүссэнээр баглаа хийлгэж болох уу?</summary>
+        <p>Мэдээж. Дуртай өнгө, цэцэг, төсвөө хэлэхэд флористууд маань зөвхөн танд зориулсан баглаа урлана. Захиалгат баглаа 100,000₮-өөс эхэлнэ.</p>
+      </details>
+      <details>
+        <summary>Картанд үг бичүүлж болох уу?</summary>
+        <p>Тийм. Захиалгын маягтын «Картын үг» хэсэгт бичээрэй. Санаа хэрэгтэй бол дээрх «Хэлэх үгээ олъё» хэсгээс сонгоорой. Мөн нэрээ нууцлан хүргүүлэх боломжтой.</p>
+      </details>
+      <details>
+        <summary>Хэр эрт захиалах вэ?</summary>
+        <p>Гэгээн Валентины өдөр, Эмэгтэйчүүдийн баяр зэрэг ачаалалтай өдрүүдэд урьдчилан захиалахыг зөвлөж байна. Бусад үед захиалгын боломжийг утсаар лавлана уу.</p>
+      </details>
+      <details>
+        <summary>Цэцгээ хэрхэн удаан хадгалах вэ?</summary>
+        <ul>
+          <li>Ишийг 2–3 см ташуу тайраад цэвэр, сэрүүн усанд хийнэ.</li>
+          <li>Усаа 1–2 өдөр тутам сольж, ишийг дахин бага зэрэг тайрна.</li>
+          <li>Нарны шууд гэрэл, халаагуур, жимснээс хол байлгана.</li>
+          <li>Усанд орох навчийг авч хаяснаар ус удаан цэвэр байна.</li>
+        </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -593,13 +847,14 @@
       <h2>Бидэнтэй <em>холбогдоорой</em></h2>
       <p class="lead">Захиалга, зөвлөгөө авах болон захиалгат баглааны талаар асуух зүйл байвал бидэнтэй хүссэн үедээ холбогдоорой.</p>
       <ul>
-        <li><svg><use href="#i-phone"/></svg><div><small>Утас</small><a href="tel:+97691854040">9185 4040</a></div></li>
-        <li><svg><use href="#i-pin"/></svg><div><small>Хаяг</small><strong>Alpha Zone, 1 давхар</strong></div></li>
+        <li><svg><use href="#i-phone"/></svg><div><small>Утас</small><a href="tel:+97691854040">9185 4040</a> <button type="button" class="copy-mini" data-copy="91854040">Хуулах</button></div></li>
+        <li><svg><use href="#i-pin"/></svg><div><small>Хаяг</small><strong>Alpha Zone, 1 давхар</strong> <a class="copy-mini" href="https://www.google.com/maps/search/?api=1&amp;query=Alpha+Zone+Ulaanbaatar" target="_blank" rel="noopener">Газрын зураг</a></div></li>
         <li><svg><use href="#i-insta"/></svg><div><small>Instagram</small><a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener">@lerubi_premiumflowers</a></div></li>
         <li><svg><use href="#i-truck"/></svg><div><small>Хүргэлт</small><strong>Хүргэлтийн үйлчилгээтэй</strong></div></li>
       </ul>
       <div class="actions">
-        <a href="tel:+97691854040" class="btn"><svg><use href="#i-phone"/></svg>Одоо залгах</a>
+        <button type="button" class="btn" data-order><svg><use href="#i-gift"/></svg>Захиалга өгөх</button>
+        <a href="tel:+97691854040" class="btn ghost"><svg><use href="#i-phone"/></svg>Залгах</a>
         <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="btn ghost"><svg><use href="#i-insta"/></svg>Instagram</a>
       </div>
     </div>
@@ -615,7 +870,109 @@
   </div>
 </footer>
 
-<a href="tel:+97691854040" class="fab" aria-label="Залгах: 9185 4040"><svg><use href="#i-phone"/></svg></a>
+<button type="button" class="fab" data-contact aria-label="Холбогдох: 9185 4040"><svg><use href="#i-phone"/></svg></button>
+<button type="button" class="totop" id="toTop" aria-label="Дээш буцах"><svg><use href="#i-arrow"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Contact dialog -->
+<dialog class="modal" id="contactModal" aria-labelledby="contactTitle">
+  <div class="m-head">
+    <span class="eyebrow">Холбоо барих</span>
+    <h3 id="contactTitle">Бидэнтэй холбогдох</h3>
+    <button type="button" class="m-close" data-close aria-label="Хаах"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="m-body">
+    <div class="bignum">9185 4040</div>
+    <p class="m-sub">Захиалга, зөвлөгөө авах бол залгах эсвэл зурвас үлдээгээрэй.</p>
+    <div class="m-actions">
+      <a href="tel:+97691854040" class="btn"><svg><use href="#i-phone"/></svg>Залгах</a>
+      <button type="button" class="btn ghost" data-copy="91854040">Дугаар хуулах</button>
+      <a href="sms:+97691854040" class="btn ghost">SMS бичих</a>
+      <a href="https://ig.me/m/lerubi_premiumflowers" target="_blank" rel="noopener" class="btn ghost"><svg><use href="#i-insta"/></svg>Instagram</a>
+      <button type="button" class="btn full" data-order data-swap><svg><use href="#i-gift"/></svg>Онлайн захиалга өгөх</button>
+    </div>
+    <ul class="m-list">
+      <li><svg><use href="#i-pin"/></svg><div><small>Хаяг</small>Alpha Zone, 1 давхар · <a href="https://www.google.com/maps/search/?api=1&amp;query=Alpha+Zone+Ulaanbaatar" target="_blank" rel="noopener">Газрын зураг</a></div></li>
+      <li><svg><use href="#i-insta"/></svg><div><small>Instagram</small><a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener">@lerubi_premiumflowers</a></div></li>
+      <li><svg><use href="#i-truck"/></svg><div><small>Хүргэлт</small>Хүргэлтийн үйлчилгээтэй</div></li>
+    </ul>
+  </div>
+</dialog>
+
+<!-- Order dialog -->
+<dialog class="modal wide" id="orderModal" aria-labelledby="orderTitle">
+  <div class="m-head">
+    <span class="eyebrow">Онлайн захиалга</span>
+    <h3 id="orderTitle">Захиалга өгөх</h3>
+    <button type="button" class="m-close" data-close aria-label="Хаах"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="m-body">
+    <form id="orderForm" novalidate>
+      <div class="pick" id="pick">
+        <img id="pickImg" src="images/pink-roses.jpg" alt="">
+        <div class="pk">
+          <div class="field">
+            <label for="o-bouquet">Баглаа</label>
+            <select id="o-bouquet" name="bouquet"></select>
+          </div>
+          <span class="pk-price" id="pickPrice"></span>
+        </div>
+      </div>
+      <div class="form">
+        <fieldset>
+          <legend>Захиалагч</legend>
+          <div class="field"><label for="o-name">Таны нэр <i>*</i></label><input id="o-name" name="name" autocomplete="name" required><span class="err"></span></div>
+          <div class="field"><label for="o-phone">Таны утас <i>*</i></label><input id="o-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="8 оронтой дугаар" required><span class="err"></span></div>
+        </fieldset>
+        <fieldset>
+          <legend>Хүлээн авагч</legend>
+          <div class="field"><label for="o-rname">Нэр <i>*</i></label><input id="o-rname" name="rname" required><span class="err"></span></div>
+          <div class="field"><label for="o-rphone">Утас <i>*</i></label><input id="o-rphone" name="rphone" type="tel" inputmode="numeric" placeholder="8 оронтой дугаар" required><span class="err"></span></div>
+          <div class="field"><label for="o-date">Хүргэх өдөр <i>*</i></label><input id="o-date" name="date" type="date" required><span class="err"></span></div>
+          <div class="field"><label for="o-time">Хүргэх цаг</label>
+            <select id="o-time" name="time">
+              <option>Тохиролцоно</option>
+              <option>Өглөө (09:00–12:00)</option>
+              <option>Өдөр (12:00–17:00)</option>
+              <option>Орой (17:00–21:00)</option>
+            </select>
+          </div>
+          <div class="field full"><label for="o-address">Хүргэх хаяг <i>*</i></label><textarea id="o-address" name="address" rows="2" placeholder="Дүүрэг, хороо, байр, орц, тоот" required></textarea><span class="err"></span></div>
+          <div class="field full"><label for="o-card">Картын үг</label><textarea id="o-card" name="card" rows="2" placeholder="Мэндчилгээний картанд бичих үг"></textarea></div>
+          <label class="check full"><input type="checkbox" id="o-anon" name="anon"> Илгээгчийн нэрийг нууцлах</label>
+          <div class="field full"><label for="o-note">Нэмэлт хүсэлт</label><textarea id="o-note" name="note" rows="2" placeholder="Өнгө, боодол, бусад хүсэлт"></textarea></div>
+        </fieldset>
+        <button type="submit" class="btn submit">Үргэлжлүүлэх</button>
+      </div>
+    </form>
+
+    <div id="orderDone" hidden>
+      <div class="ok-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 style="font-size:28px; margin-bottom:8px">Захиалгын мэдээлэл бэлэн боллоо</h3>
+      <p class="m-sub">Захиалгаа баталгаажуулахын тулд доорх мэдээллийг бидэнд илгээнэ үү.</p>
+      <pre class="summary" id="summary"></pre>
+      <div class="m-actions">
+        <a class="btn" id="sendSms" href="sms:+97691854040">SMS-ээр илгээх</a>
+        <button type="button" class="btn ghost" id="sendInsta"><svg><use href="#i-insta"/></svg>Instagram-аар илгээх</button>
+        <button type="button" class="btn ghost" id="copySummary">Мэдээлэл хуулах</button>
+        <a class="btn ghost" href="tel:+97691854040"><svg><use href="#i-phone"/></svg>Залгах</a>
+      </div>
+      <p class="fine">Instagram-аар илгээх үед мэдээлэл автоматаар хуулагдана. Чат нээгдмэгц буулгаад (paste) илгээгээрэй. Таны захиалгыг бид хүлээн аваад эргэн холбогдож баталгаажуулна.</p>
+      <button type="button" class="back-link" id="editOrder">← Мэдээлэл засах</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Зураг">
+  <div class="lb">
+    <img id="lbImg" src="images/pink-roses.jpg" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+    <button type="button" class="lb-close" data-close aria-label="Хаах"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="lb-prev" id="lbPrev" aria-label="Өмнөх"><svg><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lb-next" id="lbNext" aria-label="Дараах"><svg><use href="#i-arrow"/></svg></button>
+  </div>
+</dialog>
 
 <script>
   document.documentElement.classList.add('anim');
@@ -657,6 +1014,266 @@
       box.appendChild(p);
     }
   }
+  /* ---------- Helpers ---------- */
+  const $ = (q, el = document) => el.querySelector(q);
+  const $$ = (q, el = document) => [...el.querySelectorAll(q)];
+  const toastEl = $('#toast');
+  let toastT;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => toastEl.classList.remove('show'), 2600);
+  }
+  function copyText(text, okMsg) {
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove();
+      toast(ok ? okMsg : 'Хуулж чадсангүй. Гараараа сонгож хуулна уу.');
+      return ok;
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).then(() => { toast(okMsg); return true; }, fallback);
+    }
+    return Promise.resolve(fallback());
+  }
+  function openModal(d) {
+    if (typeof d.showModal === 'function') { if (!d.open) d.showModal(); }
+    else d.setAttribute('open', '');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(d) {
+    if (typeof d.close === 'function') d.close(); else d.removeAttribute('open');
+  }
+  $$('dialog').forEach(d => {
+    d.addEventListener('close', () => { if (!$$('dialog').some(x => x.open)) document.body.style.overflow = ''; });
+    d.addEventListener('click', e => { if (e.target === d || e.target.classList.contains('lb')) closeModal(d); });
+    $$('[data-close]', d).forEach(b => b.addEventListener('click', () => closeModal(d)));
+  });
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-copy]');
+    if (c) copyText(c.dataset.copy, 'Дугаар хуулагдлаа: 9185 4040');
+  });
+
+  /* ---------- Contact ---------- */
+  const contactModal = $('#contactModal');
+  document.addEventListener('click', e => {
+    if (e.target.closest('[data-contact]')) { drawer.classList.remove('open'); openModal(contactModal); }
+  });
+
+  /* ---------- Back to top ---------- */
+  const toTop = $('#toTop');
+  window.addEventListener('scroll', () => toTop.classList.toggle('show', window.scrollY > 900), { passive: true });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------- Price filter ---------- */
+  const cards = $$('#grid .card');
+  $$('.chip[data-filter]').forEach(chip => chip.addEventListener('click', () => {
+    $$('.chip[data-filter]').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    const f = chip.dataset.filter;
+    cards.forEach(card => {
+      const p = +card.dataset.price;
+      let show = true;
+      if (f !== 'all') { const [lo, hi] = f.split('-').map(Number); show = p >= lo && p <= hi; }
+      card.hidden = !show;
+      if (show) card.classList.add('in');
+    });
+  }));
+
+  /* ---------- Order form ---------- */
+  const products = cards.map(card => ({
+    name: $('h3', card).textContent.trim(),
+    price: $('.price', card).textContent.trim(),
+    img: $('img', card) ? $('img', card).getAttribute('src') : null
+  }));
+  const orderModal = $('#orderModal');
+  const form = $('#orderForm');
+  const sel = $('#o-bouquet');
+  products.forEach((p, i) => {
+    const o = document.createElement('option');
+    o.value = i; o.textContent = p.name + ' — ' + p.price;
+    sel.appendChild(o);
+  });
+  function syncPick() {
+    const p = products[sel.value];
+    $('#pickPrice').textContent = p.price;
+    const pick = $('#pick');
+    const old = $('.pk-custom', pick);
+    if (p.img) {
+      if (old) old.remove();
+      const img = $('#pickImg');
+      img.hidden = false; img.src = p.img; img.alt = p.name;
+    } else {
+      $('#pickImg').hidden = true;
+      if (!old) {
+        const c = document.createElement('div');
+        c.className = 'pk-custom';
+        c.innerHTML = '<svg><use href="#i-sparkle"/></svg>';
+        pick.prepend(c);
+      }
+    }
+  }
+  sel.addEventListener('change', syncPick);
+  const today = new Date();
+  const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  $('#o-date').min = iso(today);
+
+  function openOrder(name, cardText) {
+    const idx = Math.max(0, products.findIndex(p => p.name === name));
+    sel.value = idx;
+    syncPick();
+    if (cardText) $('#o-card').value = cardText;
+    if (!$('#o-date').value) $('#o-date').value = iso(today);
+    form.hidden = false; $('#orderDone').hidden = true;
+    if (contactModal.open) closeModal(contactModal);
+    drawer.classList.remove('open');
+    openModal(orderModal);
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-order]');
+    if (!b) return;
+    const card = b.closest('.card');
+    openOrder(card ? $('h3', card).textContent.trim() : (products[sel.value] || products[0]).name, b.dataset.message);
+  });
+
+  const phoneOk = v => /^\d{8}$/.test(v.replace(/[\s-]/g, ''));
+  function validate() {
+    let first = null;
+    const rules = [
+      ['#o-name', v => v.trim().length > 1, 'Нэрээ оруулна уу'],
+      ['#o-phone', phoneOk, '8 оронтой утасны дугаар оруулна уу'],
+      ['#o-rname', v => v.trim().length > 1, 'Хүлээн авагчийн нэрийг оруулна уу'],
+      ['#o-rphone', phoneOk, '8 оронтой утасны дугаар оруулна уу'],
+      ['#o-date', v => !!v && v >= iso(today), 'Өнөөдрөөс хойшхи өдөр сонгоно уу'],
+      ['#o-address', v => v.trim().length > 4, 'Хүргэх хаягаа дэлгэрэнгүй бичнэ үү']
+    ];
+    rules.forEach(([q, test, msg]) => {
+      const input = $(q), field = input.closest('.field'), ok = test(input.value);
+      field.classList.toggle('bad', !ok);
+      $('.err', field).textContent = ok ? '' : msg;
+      if (!ok && !first) first = input;
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  $$('#orderForm input, #orderForm textarea').forEach(i => i.addEventListener('input', () => {
+    const f = i.closest('.field');
+    if (f && f.classList.contains('bad')) { f.classList.remove('bad'); $('.err', f).textContent = ''; }
+  }));
+
+  let summaryText = '';
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validate()) return;
+    const p = products[sel.value];
+    const v = id => $(id).value.trim();
+    const d = new Date(v('#o-date') + 'T00:00');
+    const dateStr = d.getFullYear() + ' оны ' + (d.getMonth() + 1) + '-р сарын ' + d.getDate();
+    const lines = [
+      'LE RUBI — ШИНЭ ЗАХИАЛГА',
+      '',
+      'Баглаа: ' + p.name + ' (' + p.price + ')',
+      'Захиалагч: ' + v('#o-name') + ', ' + v('#o-phone'),
+      'Хүлээн авагч: ' + v('#o-rname') + ', ' + v('#o-rphone'),
+      'Хүргэх өдөр: ' + dateStr + ', ' + $('#o-time').value,
+      'Хаяг: ' + v('#o-address')
+    ];
+    if (v('#o-card')) lines.push('Картын үг: «' + v('#o-card') + '»');
+    if ($('#o-anon').checked) lines.push('Илгээгчийн нэрийг нууцлах');
+    if (v('#o-note')) lines.push('Нэмэлт: ' + v('#o-note'));
+    summaryText = lines.join('\n');
+    $('#summary').textContent = summaryText;
+    $('#sendSms').href = 'sms:+97691854040?&body=' + encodeURIComponent(summaryText);
+    form.hidden = true; $('#orderDone').hidden = false;
+    orderModal.scrollTop = 0;
+  });
+  $('#editOrder').addEventListener('click', () => { form.hidden = false; $('#orderDone').hidden = true; });
+  $('#copySummary').addEventListener('click', () => copyText(summaryText, 'Захиалгын мэдээлэл хуулагдлаа'));
+  $('#sendInsta').addEventListener('click', () => {
+    copyText(summaryText, 'Мэдээлэл хуулагдлаа. Instagram чатанд буулгаж илгээнэ үү.');
+    window.open('https://ig.me/m/lerubi_premiumflowers', '_blank', 'noopener');
+  });
+
+  /* ---------- Card messages ---------- */
+  const MESSAGES = {
+    'Хайр дурлал': [
+      'Чи бол миний амьдралын хамгийн гоё цэцэг. Хайртай шүү.',
+      'Өдөр бүр чамайг улам ихээр хайрлаж байна.',
+      'Чамтай хамт өнгөрүүлэх мөч бүр миний хувьд баяр юм.'
+    ],
+    'Төрсөн өдөр': [
+      'Төрсөн өдрийн мэнд хүргэе! Инээмсэглэл чинь үргэлж ийм гэрэлтэй байг.',
+      'Шинэ нас чинь аз жаргал, амжилт, хайраар дүүрэн байх болтугай.',
+      'Энэ өдөр зөвхөн чамд зориулагдсан. Төрсөн өдрийн баярын мэнд!'
+    ],
+    'Талархал': [
+      'Үргэлж дэргэд минь байдагт чинь баярлалаа.',
+      'Таны халамж, сэтгэлд чин сэтгэлээсээ талархаж байна.',
+      'Ээждээ: бүх зүйлд баярлалаа. Хайртай шүү.'
+    ],
+    'Уучлал': [
+      'Уучлаарай. Чамайг гомдоохыг хэзээ ч хүсээгүй.',
+      'Чи надад маш их хэрэгтэй. Намайг уучлаарай.',
+      'Алдаагаа ойлгосон. Дахин эхлүүлэх боломж өгөөч.'
+    ],
+    'Баяр хүргэе': [
+      'Амжилтад чинь баяр хүргэе! Хөдөлмөр чинь үр дүнгээ өгчээ.',
+      'Шинэ эхлэл чинь өнөөдрийн цэцэг шиг гоё байг.',
+      'Гэр бүл болсонд тань чин сэтгэлээсээ баяр хүргэе!'
+    ]
+  };
+  const tabs = $('#msgTabs'), grid = $('#msgGrid');
+  function showMsgs(key) {
+    $$('.chip', tabs).forEach(t => t.setAttribute('aria-selected', String(t.dataset.k === key)));
+    $$('.chip', tabs).forEach(t => t.setAttribute('aria-pressed', String(t.dataset.k === key)));
+    grid.innerHTML = '';
+    MESSAGES[key].forEach(text => {
+      const el = document.createElement('div');
+      el.className = 'msg';
+      el.innerHTML = '<p></p><div class="row"><button type="button" class="order" data-msg-copy>Хуулах</button><button type="button" class="order" data-order>Энэ үгээр захиалах</button></div>';
+      $('p', el).textContent = text;
+      $('[data-order]', el).dataset.message = text;
+      $('[data-msg-copy]', el).addEventListener('click', () => copyText(text, 'Үг хуулагдлаа'));
+      grid.appendChild(el);
+    });
+  }
+  Object.keys(MESSAGES).forEach((k, i) => {
+    const t = document.createElement('button');
+    t.type = 'button'; t.className = 'chip'; t.setAttribute('role', 'tab'); t.dataset.k = k; t.textContent = k;
+    t.addEventListener('click', () => showMsgs(k));
+    tabs.appendChild(t);
+  });
+  showMsgs('Хайр дурлал');
+
+  /* ---------- Lightbox ---------- */
+  const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  const shots = $$('[data-lightbox] img');
+  let cur = 0;
+  function showShot(i) {
+    cur = (i + shots.length) % shots.length;
+    lbImg.src = shots[cur].getAttribute('src');
+    lbImg.alt = shots[cur].alt;
+    lbCap.textContent = shots[cur].alt;
+  }
+  $$('[data-lightbox]').forEach((b, i) => b.addEventListener('click', () => { showShot(i); openModal(lb); }));
+  $('#lbPrev').addEventListener('click', () => showShot(cur - 1));
+  $('#lbNext').addEventListener('click', () => showShot(cur + 1));
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') showShot(cur - 1);
+    if (e.key === 'ArrowRight') showShot(cur + 1);
+  });
+  let sx = null;
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) showShot(cur + (dx < 0 ? 1 : -1));
+    sx = null;
+  });
 </script>
 </body>
 </html>
