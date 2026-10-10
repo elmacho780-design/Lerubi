@@ -31,7 +31,6 @@
     --ease: cubic-bezier(.2, .7, .2, 1);
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--ivory);
@@ -982,11 +981,21 @@
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const toTopNow = () => {
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo(0, 0);
+  };
+  // iPhone Safari restores the old scroll position late, after the page has loaded,
+  // so repeat the reset for a moment unless the visitor has already started scrolling.
+  let userScrolled = false;
+  ['touchstart', 'wheel', 'keydown', 'mousedown'].forEach(ev =>
+    window.addEventListener(ev, () => { userScrolled = true; }, { once: true, passive: true }));
+  const holdTop = () => {
+    toTopNow();
+    [60, 200, 500, 900, 1500].forEach(t => setTimeout(() => { if (!userScrolled) toTopNow(); }, t));
   };
   toTopNow();
-  window.addEventListener('load', toTopNow);
-  window.addEventListener('pageshow', e => { if (e.persisted) toTopNow(); });
+  document.addEventListener('DOMContentLoaded', toTopNow);
+  window.addEventListener('load', holdTop);
+  window.addEventListener('pageshow', e => { if (e.persisted) { userScrolled = false; holdTop(); } });
 
   /* In-page links scroll smoothly without adding #section to the address */
   document.addEventListener('click', e => {
