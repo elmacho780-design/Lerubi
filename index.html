@@ -161,6 +161,7 @@
   }
 
   section { padding: 120px 0; }
+  section[id] { scroll-margin-top: 64px; }
 
   /* Intro */
   .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -976,6 +977,27 @@
 
 <script>
   document.documentElement.classList.add('anim');
+
+  /* Always open at the top of the page */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const toTopNow = () => {
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
+  toTopNow();
+  window.addEventListener('load', toTopNow);
+  window.addEventListener('pageshow', e => { if (e.persisted) toTopNow(); });
+
+  /* In-page links scroll smoothly without adding #section to the address */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    const target = id ? document.getElementById(id) : null;
+    e.preventDefault();
+    if (!target || id === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+    else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const header = document.querySelector('header.site');
