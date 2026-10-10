@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Rubi — Дээд зэрэглэлийн цэцэг</title>
+<meta name="description" content="Le Rubi Premium Flowers — хайртай хүмүүстээ онцгой мэдрэмж бэлэглэх дээд зэрэглэлийн цэцгийн бутик. Улаанбаатар хотод хүргэлттэй. Утас: 9185 4040.">
+<meta property="og:title" content="Le Rubi — Дээд зэрэглэлийн цэцэг">
+<meta property="og:description" content="Хайртай хүмүүстээ онцгой мэдрэмж бэлэглээрэй. Хүргэлттэй. 9185 4040">
+<meta property="og:image" content="images/grand-pink.jpg">
+<meta name="theme-color" content="#f6efe6">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #fbf7f1;
+    --cream: #f4ece1;
+    --blush: #f3dfdc;
+    --rose: #b4566a;
+    --rose-deep: #8e3a4e;
+    --gold: #b8955a;
+    --gold-soft: #d9c39a;
+    --ink: #231c1a;
+    --ink-soft: #5d514c;
+    --line: rgba(35, 28, 26, 0.12);
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    --max: 1200px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before, .eyebrow.both::after {
+    content: ""; width: 34px; height: 1px; background: currentColor; opacity: .7;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.12; letter-spacing: .005em; }
+  h2 { font-size: clamp(34px, 4.6vw, 54px); }
+  h2 em, h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
+  .lead { color: var(--ink-soft); font-size: 16px; max-width: 560px; }
+  .center { text-align: center; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 34px;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+    border: 1px solid var(--ink);
+    background: var(--ink); color: var(--ivory);
+    transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--rose-deep); border-color: var(--rose-deep); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Header */
+  header.site {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    transition: background .5s var(--ease), box-shadow .5s var(--ease), padding .5s var(--ease);
+    padding: 22px 0;
+  }
+  header.site.scrolled {
+    background: rgba(251, 247, 241, .92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--line);
+    padding: 12px 0;
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav .logo img { height: 46px; width: auto; transition: height .5s var(--ease); }
+  header.site.scrolled .logo img { height: 38px; }
+  .nav ul { list-style: none; display: flex; gap: 34px; margin: 0; padding: 0; }
+  .nav ul a {
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
+    position: relative; padding: 4px 0;
+  }
+  .nav ul a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease);
+  }
+  .nav ul a:hover::after { transform: scaleX(1); }
+  .nav .call { padding: 12px 22px; font-size: 11px; }
+  .burger { display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--ink); }
+  .burger svg { width: 26px; height: 26px; }
+
+  .drawer {
+    position: fixed; inset: 0; z-index: 60; background: var(--ivory);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+    opacity: 0; pointer-events: none; transition: opacity .4s var(--ease);
+  }
+  .drawer.open { opacity: 1; pointer-events: auto; }
+  .drawer a.link { font-family: var(--serif); font-size: 32px; }
+  .drawer .close { position: absolute; top: 22px; right: 22px; background: none; border: 0; cursor: pointer; padding: 8px; color: var(--ink); }
+  .drawer .close svg { width: 28px; height: 28px; }
+
+  /* Hero */
+  .hero {
+    position: relative; min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center;
+    background: url("images/hero-bg.jpg") center right / cover no-repeat;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(251,247,241,.94) 0%, rgba(251,247,241,.78) 38%, rgba(251,247,241,.15) 68%, rgba(251,247,241,0) 100%);
+  }
+  .hero::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 160px;
+    background: linear-gradient(to bottom, rgba(251,247,241,0), var(--ivory));
+  }
+  .hero .wrap { position: relative; z-index: 2; padding-top: 110px; padding-bottom: 80px; }
+  .hero-text { max-width: 580px; }
+  .hero h1 { font-size: clamp(44px, 6.4vw, 84px); margin: 22px 0 26px; font-weight: 300; }
+  .hero p { font-size: 17px; color: var(--ink-soft); max-width: 470px; margin: 0 0 40px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero .meta {
+    margin-top: 56px; display: flex; flex-wrap: wrap; gap: 34px;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .hero .meta span { display: inline-flex; align-items: center; gap: 10px; }
+  .hero .meta svg { width: 18px; height: 18px; color: var(--gold); }
+
+  .petal {
+    position: absolute; top: -40px; z-index: 1; width: 16px; height: 12px;
+    background: radial-gradient(circle at 30% 30%, #fbe3e3, #eab4bb);
+    border-radius: 80% 0 80% 0; opacity: .8;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0% { transform: translate(0, -40px) rotate(0deg); }
+    100% { transform: translate(-140px, 110vh) rotate(540deg); }
+  }
+
+  section { padding: 120px 0; }
+
+  /* Intro */
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .intro-img { position: relative; }
+  .intro-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+  .intro-img::before {
+    content: ""; position: absolute; inset: 24px -24px -24px 24px; border: 1px solid var(--gold-soft); z-index: -1;
+  }
+  .intro-img .badge {
+    position: absolute; left: -36px; bottom: 48px;
+    background: var(--ivory); padding: 26px 30px; box-shadow: 0 20px 50px rgba(35,28,26,.08);
+    font-family: var(--serif); text-align: center;
+  }
+  .intro-img .badge strong { display: block; font-size: 40px; font-weight: 400; color: var(--rose); line-height: 1; }
+  .intro-img .badge span { font-family: var(--sans); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-soft); }
+  .intro h2 { margin: 18px 0 26px; }
+  .intro p { color: var(--ink-soft); margin: 0 0 18px; }
+  .signature { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--rose); margin-top: 28px; }
+
+  /* Collection */
+  .collection { background: var(--cream); }
+  .collection-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 64px; flex-wrap: wrap; }
+  .collection-head h2 { margin-top: 16px; }
+  .price-range {
+    font-family: var(--serif); font-size: 22px; color: var(--ink);
+    border-left: 1px solid var(--gold); padding-left: 22px; line-height: 1.4;
+  }
+  .price-range small { display: block; font-family: var(--sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .card { background: var(--ivory); display: flex; flex-direction: column; }
+  .card .ph { position: relative; overflow: hidden; aspect-ratio: 4/5; background: #e9dfd3; }
+  .card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .card:hover .ph img { transform: scale(1.06); }
+  .card .tag {
+    position: absolute; top: 18px; left: 18px; background: rgba(251,247,241,.92);
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase; padding: 7px 12px; font-weight: 500;
+  }
+  .card .body { padding: 28px 28px 30px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { font-size: 28px; }
+  .card .desc { color: var(--ink-soft); font-size: 14px; margin: 10px 0 22px; flex: 1; }
+  .card .foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 18px; gap: 12px; }
+  .card .price { font-family: var(--serif); font-size: 24px; color: var(--rose-deep); }
+  .card .order {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--ink); padding-bottom: 3px;
+    transition: color .3s, border-color .3s;
+  }
+  .card .order:hover { color: var(--rose); border-color: var(--rose); }
+  .card.custom .ph {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(160deg, #f6e6e3 0%, #efe2cf 100%);
+  }
+  .card.custom .ph .inner { padding: 40px; }
+  .card.custom .ph .inner svg { width: 54px; height: 54px; color: var(--gold); margin: 0 auto 22px; }
+  .card.custom .ph .inner p { font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1.35; margin: 0; color: var(--ink); }
+  .note { text-align: center; color: var(--ink-soft); font-size: 13px; margin-top: 52px; }
+
+  /* Values */
+  .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px; }
+  .value { padding: 48px 30px; text-align: center; border-right: 1px solid var(--line); }
+  .value:last-child { border-right: 0; }
+  .value svg { width: 38px; height: 38px; color: var(--gold); margin: 0 auto 22px; }
+  .value h3 { font-size: 24px; margin-bottom: 10px; }
+  .value p { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+  /* Quote band */
+  .band {
+    position: relative; padding: 150px 0; text-align: center; color: var(--ivory);
+    background: url("images/red-roses-orchid.jpg") center / cover fixed no-repeat;
+  }
+  .band::before { content: ""; position: absolute; inset: 0; background: rgba(28, 16, 18, .62); }
+  .band .wrap { position: relative; }
+  .band blockquote { margin: 0 auto; max-width: 820px; font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(30px, 4.2vw, 50px); line-height: 1.3; }
+  .band cite { display: block; margin-top: 30px; font-style: normal; font-family: var(--sans); font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-soft); }
+
+  /* Occasions */
+  .occasions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 64px; }
+  .occ { background: var(--ivory); padding: 44px 36px; transition: background .5s var(--ease); }
+  .occ:hover { background: var(--blush); }
+  .occ .num { font-family: var(--serif); font-size: 15px; color: var(--gold); letter-spacing: .1em; }
+  .occ h3 { font-size: 28px; margin: 12px 0 10px; }
+  .occ p { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 16px; margin-top: 64px; }
+  .gallery a { overflow: hidden; position: relative; display: block; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .gallery a:hover img { transform: scale(1.05); }
+  .gallery a:first-child { grid-row: span 2; }
+  .gallery a::after {
+    content: "@lerubi_premiumflowers"; position: absolute; inset: auto 0 0 0; padding: 16px;
+    background: linear-gradient(transparent, rgba(28,16,18,.55)); color: #fff; font-size: 11px; letter-spacing: .16em;
+    opacity: 0; transition: opacity .4s var(--ease);
+  }
+  .gallery a:hover::after { opacity: 1; }
+
+  /* Delivery steps */
+  .delivery { background: var(--blush); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; counter-reset: s; }
+  .step { position: relative; padding-top: 30px; border-top: 1px solid rgba(142,58,78,.25); }
+  .step .n { font-family: var(--serif); font-size: 64px; line-height: 1; color: var(--rose); font-weight: 300; }
+  .step h3 { font-size: 26px; margin: 14px 0 10px; }
+  .step p { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--ink); color: var(--ivory); }
+  .contact .info { padding: 80px 72px; }
+  .contact h2 { margin: 18px 0 22px; }
+  .contact h2 em { color: var(--gold-soft); }
+  .contact .lead { color: rgba(251,247,241,.72); }
+  .contact ul { list-style: none; padding: 0; margin: 40px 0 44px; }
+  .contact li { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(251,247,241,.12); align-items: flex-start; }
+  .contact li svg { width: 22px; height: 22px; color: var(--gold-soft); flex-shrink: 0; margin-top: 3px; }
+  .contact li small { display: block; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(251,247,241,.55); }
+  .contact li strong, .contact li a { font-family: var(--serif); font-size: 24px; font-weight: 400; }
+  .contact li a:hover { color: var(--gold-soft); }
+  .contact .btn { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+  .contact .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .contact .btn.ghost { background: transparent; color: var(--ivory); border-color: rgba(251,247,241,.5); }
+  .contact .btn.ghost:hover { background: var(--ivory); color: var(--ink); }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .contact .pic { min-height: 520px; background: url("images/white-chrysanthemum.jpg") center / cover no-repeat; }
+
+  footer { background: #1a1412; color: rgba(251,247,241,.6); padding: 54px 0 40px; text-align: center; font-size: 12px; }
+  footer img { height: 54px; margin: 0 auto 22px; opacity: .92; }
+  footer .tag { font-family: var(--serif); font-style: italic; font-size: 20px; color: rgba(251,247,241,.85); margin-bottom: 22px; }
+  footer .copy { letter-spacing: .14em; }
+
+  .fab {
+    position: fixed; right: 18px; bottom: 18px; z-index: 40;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--rose-deep); color: #fff; display: none; align-items: center; justify-content: center;
+    box-shadow: 0 12px 30px rgba(142,58,78,.35);
+  }
+  .fab svg { width: 24px; height: 24px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .no-js .reveal { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .petal { display: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 1024px) {
+    .nav ul, .nav .call { display: none; }
+    .burger { display: block; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .values { grid-template-columns: repeat(2, 1fr); }
+    .value:nth-child(2) { border-right: 0; }
+    .value:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .intro { gap: 56px; }
+    .contact .info { padding: 64px 40px; }
+    .band { background-attachment: scroll; }
+  }
+  @media (max-width: 760px) {
+    body { font-size: 14px; }
+    .wrap { padding: 0 16px; }
+    section { padding: 84px 0; }
+    .hero { background-position: 72% center; }
+    .hero::before { background: linear-gradient(180deg, rgba(251,247,241,.92) 0%, rgba(251,247,241,.82) 55%, rgba(251,247,241,.55) 100%); }
+    .hero .meta { gap: 18px; flex-direction: column; margin-top: 40px; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    .intro { grid-template-columns: 1fr; }
+    .intro-img { margin-right: 24px; }
+    .intro-img .badge { left: 16px; bottom: -28px; padding: 18px 22px; }
+    .intro-img .badge strong { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; gap: 28px; }
+    .values { grid-template-columns: 1fr; }
+    .value { border-right: 0; border-bottom: 1px solid var(--line); }
+    .value:last-child { border-bottom: 0; }
+    .occasions { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 200px 200px; }
+    .gallery a:first-child { grid-column: span 2; grid-row: auto; }
+    .steps { grid-template-columns: 1fr; gap: 36px; }
+    .contact { grid-template-columns: 1fr; }
+    .contact .info { padding: 64px 16px; }
+    .contact .pic { min-height: 340px; }
+    .contact .actions .btn { flex: 1 1 100%; }
+    .band { padding: 110px 0; }
+    .fab { display: flex; }
+  }
+</style>
+</head>
+<body class="no-js">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h14v12H1zM15 9h4l4 4v3h-8"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="2.2"/><path d="M12 6.8c0-3 3.5-3.6 3.5-.8 0 1.6-1.5 2.4-3.5 3M12 6.8c0-3-3.5-3.6-3.5-.8 0 1.6 1.5 2.4 3.5 3M14.2 9c3 0 3.6 3.5.8 3.5-1.6 0-2.4-1.5-3-3.5M9.8 9c-3 0-3.6 3.5-.8 3.5 1.6 0 2.4-1.5 3-3.5M12 11.2V22M12 18c-2.5 0-4-1.5-4.5-3.5M12 16c2 0 3.5-1 4-3"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.3-9.2C1.5 8.7 3.4 5 6.9 5c2 0 3.3 1.1 4.1 2.4C11.8 6.1 13.1 5 15.1 5c3.5 0 5.4 3.7 4.2 6.8C19.5 16.4 12 21 12 21z"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="site" id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Le Rubi — нүүр хуудас"><img src="images/logo.png" alt="Le Rubi Premium Flowers"></a>
+    <ul>
+      <li><a href="#about">Бидний тухай</a></li>
+      <li><a href="#collection">Цуглуулга</a></li>
+      <li><a href="#occasions">Баяр ёслол</a></li>
+      <li><a href="#delivery">Хүргэлт</a></li>
+      <li><a href="#contact">Холбоо барих</a></li>
+    </ul>
+    <a href="tel:+97691854040" class="btn call"><svg><use href="#i-phone"/></svg>9185 4040</a>
+    <button class="burger" aria-label="Цэс нээх" id="openMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h18M3 12h18M9 17h12"/></svg>
+    </button>
+  </div>
+</header>
+
+<nav class="drawer" id="drawer" aria-label="Гар утасны цэс">
+  <button class="close" aria-label="Цэс хаах" id="closeMenu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a class="link" href="#about">Бидний тухай</a>
+  <a class="link" href="#collection">Цуглуулга</a>
+  <a class="link" href="#occasions">Баяр ёслол</a>
+  <a class="link" href="#delivery">Хүргэлт</a>
+  <a class="link" href="#contact">Холбоо барих</a>
+  <a href="tel:+97691854040" class="btn" style="margin-top:14px"><svg><use href="#i-phone"/></svg>9185 4040</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero" aria-label="Нүүр">
+  <div id="petals" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow reveal">Дээд зэрэглэлийн цэцгийн бутик</span>
+      <h1 class="reveal">Хайртай хүмүүстээ <em>онцгой мэдрэмж</em> бэлэглээрэй</h1>
+      <p class="reveal">Үг хүрэлцэхгүй мөчид цэцэг ярина. Le Rubi-гийн гараар урласан тансаг баглаа бүр таны сэтгэлийн дулааныг хайртай хүндээ хамгийн гоё хэлбэрээр хүргэнэ.</p>
+      <div class="actions reveal">
+        <a href="#collection" class="btn">Цуглуулга үзэх</a>
+        <a href="tel:+97691854040" class="btn ghost"><svg><use href="#i-phone"/></svg>Захиалга өгөх</a>
+      </div>
+      <div class="meta reveal">
+        <span><svg><use href="#i-truck"/></svg>Хүргэлттэй</span>
+        <span><svg><use href="#i-flower"/></svg>Өдөр бүр шинэхэн цэцэг</span>
+        <span><svg><use href="#i-pin"/></svg>Alpha Zone, 1 давхар</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap intro">
+    <div class="intro-img reveal">
+      <img src="images/pink-roses.jpg" alt="Ягаан сарнайн тансаг баглаа" loading="lazy">
+      <div class="badge"><strong>100%</strong><span>Сэтгэлээсээ</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Бидний тухай</span>
+      <h2>Цэцэг бүрт <em>сэтгэл</em>, баглаа бүрт <em>түүх</em></h2>
+      <p>Le Rubi бол энгийн нэг цэцгийн дэлгүүр биш. Бид хамгийн шилдэг, шинэхэн цэцгийг нэг бүрчлэн сонгож, мэргэжлийн флористуудын нарийн урлалаар таны мэдрэмжийг илэрхийлэх онцгой баглаа болгон бүтээдэг.</p>
+      <p>Төрсөн өдөр, хайрын илэрхийлэл, баяр хөөр эсвэл зүгээр л «чамайгаа бодож байна» гэх өдөр — хайртай хүмүүсийнхээ нүүрэнд тодрох инээмсэглэл бол бидний хамгийн том шагнал.</p>
+      <div class="signature">— Le Rubi Premium Flowers</div>
+    </div>
+  </div>
+</section>
+
+<!-- Collection -->
+<section id="collection" class="collection">
+  <div class="wrap">
+    <div class="collection-head">
+      <div class="reveal">
+        <span class="eyebrow">Онцлох цуглуулга</span>
+        <h2>Тансаг <em>баглаанууд</em></h2>
+      </div>
+      <div class="price-range reveal">
+        <small>Үнийн хүрээ</small>
+        100,000₮ — 500,000₮
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card reveal">
+        <div class="ph">
+          <img src="images/pink-roses.jpg" alt="Ягаан сарнайн баглаа ягаан цаасан боодолтой" loading="lazy">
+          <span class="tag">Хамгийн их захиалгатай</span>
+        </div>
+        <div class="body">
+          <h3>Ягаан Мөрөөдөл</h3>
+          <p class="desc">Зөөлөн ягаан сарнай, ногоон навчис, эрвээхэйн чимэглэлтэй. Эмзэг сэтгэлийн дулаан илэрхийлэл.</p>
+          <div class="foot"><span class="price">150,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ph">
+          <img src="images/white-chrysanthemum.jpg" alt="Цагаан хризантем цэцгийн баглаа" loading="lazy">
+          <span class="tag">Цэвэр ариун</span>
+        </div>
+        <div class="body">
+          <h3>Цагаан Үүл</h3>
+          <p class="desc">Том толгойт цагаан хризантемууд, саарал тансаг боодолтой. Хүндэтгэл, талархал, шинэ эхлэлийн бэлэг тэмдэг.</p>
+          <div class="foot"><span class="price">200,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ph">
+          <img src="images/pink-mix.jpg" alt="Ягаан сарнай, хризантем холилдсон хар боодолтой баглаа" loading="lazy">
+          <span class="tag">Дизайнерын сонголт</span>
+        </div>
+        <div class="body">
+          <h3>Хатан Ягаан</h3>
+          <p class="desc">Сарнай, бутлаг сарнай, хризантем, левкой цэцгийн гайхалтай хослол. Хар өнгийн тансаг боодол нь онцгой хэв маягийг тодотгоно.</p>
+          <div class="foot"><span class="price">280,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ph">
+          <img src="images/grand-pink.jpg" alt="Олон ягаан сарнайтай том баглаа" loading="lazy">
+          <span class="tag">Prestige</span>
+        </div>
+        <div class="body">
+          <h3>Мянган Инээмсэглэл</h3>
+          <p class="desc">Арвин ягаан сарнайн сүрлэг баглаа. Хэлж барахгүй их хайрыг нэг харцаар мэдрүүлнэ.</p>
+          <div class="foot"><span class="price">450,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ph">
+          <img src="images/red-roses-orchid.jpg" alt="Улаан сарнай, цагаан орхидейтой зүрхэн хэлбэрийн баглаа" loading="lazy">
+          <span class="tag">Signature</span>
+        </div>
+        <div class="body">
+          <h3>Цор Ганц Түүндээ</h3>
+          <p class="desc">Зүрхэн хэлбэрт улаан сарнай, цагаан орхидейн нарийн хослол. Хамгийн чухал хүндээ зориулсан хамгийн онцгой бэлэг.</p>
+          <div class="foot"><span class="price">500,000₮</span><a class="order" href="tel:+97691854040">Захиалах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="card custom reveal">
+        <div class="ph">
+          <div class="inner">
+            <svg><use href="#i-sparkle"/></svg>
+            <p>Таны төсөөлөл,<br>бидний урлал</p>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Захиалгат баглаа</h3>
+          <p class="desc">Дуртай өнгө, цэцэг, төсвөө хэлээрэй — флористууд маань зөвхөн танд зориулсан давтагдашгүй баглааг бүтээнэ.</p>
+          <div class="foot"><span class="price">100,000₮-өөс</span><a class="order" href="tel:+97691854040">Зөвлөгөө авах <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="note reveal">Үнэ нь цэцгийн улирал, хэмжээнээс хамаарч өөрчлөгдөх боломжтой. Дэлгэрэнгүйг утсаар болон Instagram-аар лавлана уу.</p>
+
+    <div class="values">
+      <div class="value reveal"><svg><use href="#i-flower"/></svg><h3>Шинэхэн цэцэг</h3><p>Өдөр бүр шинээр ирсэн, шилдэг чанарын цэцэг.</p></div>
+      <div class="value reveal"><svg><use href="#i-hand"/></svg><h3>Гар урлал</h3><p>Баглаа бүрийг сэтгэл гарган, нэг бүрчлэн урладаг.</p></div>
+      <div class="value reveal"><svg><use href="#i-gift"/></svg><h3>Тансаг боодол</h3><p>Le Rubi брэндийн өвөрмөц, гоёмсог боодол.</p></div>
+      <div class="value reveal"><svg><use href="#i-truck"/></svg><h3>Хүргэлт</h3><p>Таны хайртай хүний босгон дээр цэвэрхэн, цагтаа.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="band" aria-label="Ишлэл">
+  <div class="wrap">
+    <blockquote class="reveal">«Хамгийн үнэ цэнэтэй бэлэг бол сэтгэлээсээ бодож сонгосон бэлэг юм.»</blockquote>
+    <cite class="reveal">Le Rubi Premium Flowers</cite>
+  </div>
+</section>
+
+<!-- Occasions -->
+<section id="occasions">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow both">Мөч бүрт зориулж</span>
+      <h2 style="margin-top:16px">Ямар ч <em>онцгой өдөрт</em></h2>
+      <p class="lead" style="margin-top:20px">Амьдралын чухал мөч бүрийг цэцгээр чимэглэж, мартагдашгүй дурсамж болгоно.</p>
+    </div>
+    <div class="occasions">
+      <div class="occ reveal"><div class="num">01</div><h3>Хайр дурлал</h3><p>Гэрлэх санал, ой, Гэгээн Валентины өдөр — хайраа хамгийн гоёор илэрхийл.</p></div>
+      <div class="occ reveal"><div class="num">02</div><h3>Төрсөн өдөр</h3><p>Нэг жилдээ ганцхан ирдэг өдрийг нь цэцгийн баглаагаар гэрэлтүүл.</p></div>
+      <div class="occ reveal"><div class="num">03</div><h3>Эмэгтэйчүүдийн баяр</h3><p>Ээж, эхнэр, охин, хамт олондоо талархал, хүндэтгэлээ илэрхийл.</p></div>
+      <div class="occ reveal"><div class="num">04</div><h3>Төгсөлт ба амжилт</h3><p>Шинэ эхлэл, том амжилтыг нь тансаг баглаагаар баяр хүргэ.</p></div>
+      <div class="occ reveal"><div class="num">05</div><h3>Хурим ба ёслол</h3><p>Сүйт бүсгүйн баглаа, арга хэмжээний чимэглэл — захиалгаар.</p></div>
+      <div class="occ reveal"><div class="num">06</div><h3>Зүгээр л…</h3><p>Хайртай хүндээ цэцэг бэлэглэхэд шалтгаан хэрэггүй.</p></div>
+    </div>
+
+    <div class="gallery">
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/red-roses-orchid.jpg" alt="Улаан сарнай, орхидейн баглаа" loading="lazy"></a>
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/pink-mix.jpg" alt="Ягаан холимог баглаа" loading="lazy"></a>
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/white-chrysanthemum.jpg" alt="Цагаан хризантем" loading="lazy"></a>
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/grand-pink.jpg" alt="Том ягаан сарнайн баглаа" loading="lazy"></a>
+      <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="reveal"><img src="images/pink-roses.jpg" alt="Ягаан сарнай" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- Delivery -->
+<section id="delivery" class="delivery">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Хүргэлтийн үйлчилгээ</span>
+      <h2 style="margin-top:16px">Гурван алхамд <em>сэтгэлээ</em> хүргээрэй</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h3>Баглаагаа сонгох</h3><p>Цуглуулгаас сонгох эсвэл өөрийн хүссэн өнгө, төсвөөр захиалгат баглаа хийлгэх боломжтой.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Захиалга өгөх</h3><p>9185 4040 дугаарт залгах эсвэл Instagram-аар бидэнтэй холбогдоорой. Мэндчилгээний картанд бичих үгээ хэлээрэй.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Бид хүргэнэ</h3><p>Таны хайртай хүнд баглааг нь цэвэрхэн, анхааралтайгаар хаалган дээр нь хүргэж өгнө.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="padding:0">
+  <div class="contact">
+    <div class="info reveal">
+      <span class="eyebrow">Холбоо барих</span>
+      <h2>Бидэнтэй <em>холбогдоорой</em></h2>
+      <p class="lead">Захиалга, зөвлөгөө авах болон захиалгат баглааны талаар асуух зүйл байвал бидэнтэй хүссэн үедээ холбогдоорой.</p>
+      <ul>
+        <li><svg><use href="#i-phone"/></svg><div><small>Утас</small><a href="tel:+97691854040">9185 4040</a></div></li>
+        <li><svg><use href="#i-pin"/></svg><div><small>Хаяг</small><strong>Alpha Zone, 1 давхар</strong></div></li>
+        <li><svg><use href="#i-insta"/></svg><div><small>Instagram</small><a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener">@lerubi_premiumflowers</a></div></li>
+        <li><svg><use href="#i-truck"/></svg><div><small>Хүргэлт</small><strong>Хүргэлтийн үйлчилгээтэй</strong></div></li>
+      </ul>
+      <div class="actions">
+        <a href="tel:+97691854040" class="btn"><svg><use href="#i-phone"/></svg>Одоо залгах</a>
+        <a href="https://www.instagram.com/lerubi_premiumflowers/" target="_blank" rel="noopener" class="btn ghost"><svg><use href="#i-insta"/></svg>Instagram</a>
+      </div>
+    </div>
+    <div class="pic" role="img" aria-label="Цагаан хризантемын баглаа"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="images/logo-light.png" alt="Le Rubi Premium Flowers">
+    <div class="tag">Хайртай хүмүүстээ — хамгийн гоё нь</div>
+    <div class="copy">© <span id="yr">2026</span> Le Rubi Premium Flowers · Alpha Zone, 1 давхар · 9185 4040</div>
+  </div>
+</footer>
+
+<a href="tel:+97691854040" class="fab" aria-label="Залгах: 9185 4040"><svg><use href="#i-phone"/></svg></a>
+
+<script>
+  document.body.classList.remove('no-js');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const header = document.querySelector('header.site');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const drawer = document.getElementById('drawer');
+  document.getElementById('openMenu').addEventListener('click', () => drawer.classList.add('open'));
+  document.getElementById('closeMenu').addEventListener('click', () => drawer.classList.remove('open'));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el); });
+  } else {
+    els.forEach(el => el.classList.add('in'));
+  }
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const box = document.getElementById('petals');
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      const s = 0.6 + Math.random() * 0.9;
+      p.style.left = (35 + Math.random() * 70) + '%';
+      p.style.width = 16 * s + 'px';
+      p.style.height = 12 * s + 'px';
+      p.style.animationDuration = (11 + Math.random() * 10) + 's';
+      p.style.animationDelay = (-Math.random() * 20) + 's';
+      box.appendChild(p);
+    }
+  }
+</script>
+</body>
+</html>
